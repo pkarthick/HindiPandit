@@ -1,0 +1,744 @@
+﻿<Window x:Class="HindiPandit.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="1029" Width="1082"
+        xmlns:local="clr-namespace:HindiPandit"
+        xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"        
+        WindowState="Maximized"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown" >
+    <Window.Resources>
+        <local:DebugConverter x:Key="DebugConverter" />
+
+        <local:Sentence x:Key="WordsMeaningSource" />
+
+        <Style x:Key="HindiWordButton" TargetType="Button">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+
+        <Style TargetType="ToggleButton">
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+
+    </Window.Resources>
+
+    <DockPanel>
+
+
+
+        <Grid DockPanel.Dock="Right" VerticalAlignment="Stretch">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button Content="Save" Width="200" Height="30" Click="Button_Save_Click" />
+            <TextBlock Text="Words &amp; Meaning" Grid.Row="1" FontSize="22" FontWeight="Bold" />
+            <HeaderedItemsControl Margin="5" Grid.Row="2" VerticalAlignment="Stretch" FontSize="20" ItemsSource="{x:Static local:Sentence.WordsMeaning}" Width="Auto" >
+                <HeaderedItemsControl.Template>
+                    <ControlTemplate>
+                        <ScrollViewer x:Name="ScrollViewer" Padding="{TemplateBinding Padding}">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </HeaderedItemsControl.Template>
+                <HeaderedItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{StaticResource HindiWordButton}" Foreground="Blue" HorizontalAlignment="Stretch" Click="Button_Click_Word" >
+                                <Grid>
+                                    <TextBlock Text="{Binding HindiWord}" />
+                                </Grid>
+                            </Button>
+                            <StackPanel Grid.Column="1">
+                                <!--<TextBlock VerticalAlignment="Center" FontSize="16" Text=" (" />-->
+                                <TextBlock VerticalAlignment="Center" FontSize="16" Text="{Binding EnglishReadableWord}" />
+                                <!--<TextBlock VerticalAlignment="Center" FontSize="16" Text=") = " />-->
+                                <TextBlock VerticalAlignment="Center" FontSize="16" Foreground="Green" Text="{Binding EnglishMeaning}" />
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </HeaderedItemsControl.ItemTemplate>
+            </HeaderedItemsControl>
+
+        </Grid>
+
+        <StackPanel DockPanel.Dock="Bottom">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+
+
+                <Button Background="LightYellow" Click="Button_HindiLetter_Click">
+                    <StackPanel>
+                        <TextBlock Foreground="Blue" Text="अ"/>
+                        <TextBlock Text="a"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="LightYellow" Click="Button_HindiLetter_Click">
+                    <StackPanel>
+                        <TextBlock Foreground="Blue" Text="आ"/>
+                        <TextBlock Text="aa"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="LightYellow" Click="Button_HindiLetter_Click">
+                    <StackPanel>
+                        <TextBlock Foreground="Blue" Text="इ"/>
+                        <TextBlock Text="i"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="LightYellow" Click="Button_HindiLetter_Click">
+                    <StackPanel>
+                        <TextBlock Foreground="Blue" Text="ई"/>
+                        <TextBlock Text="ee"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="LightYellow" Click="Button_HindiLetter_Click">
+                    <StackPanel>
+                        <TextBlock Foreground="Blue" Text="उ"/>
+                        <TextBlock Text="u"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="LightYellow" Click="Button_HindiLetter_Click">
+                    <StackPanel>
+                        <TextBlock Foreground="Blue" Text="ऊ"/>
+                        <TextBlock Text="oo"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="LightYellow" Click="Button_HindiLetter_Click">
+                    <StackPanel>
+                        <TextBlock Foreground="Blue" Text="ए"/>
+                        <TextBlock Text="ae"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="LightYellow" Click="Button_HindiLetter_Click">
+                    <StackPanel>
+                        <TextBlock Foreground="Blue" Text="ऐ"/>
+                        <TextBlock Text="ai"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="LightYellow" Click="Button_HindiLetter_Click">
+                    <StackPanel>
+                        <TextBlock Foreground="Blue" Text="ओ"/>
+                        <TextBlock Text="o"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="LightYellow" Click="Button_HindiLetter_Click">
+                    <StackPanel>
+                        <TextBlock Foreground="Blue" Text="औ"/>
+                        <TextBlock Text="au"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="LightYellow" Click="Button_HindiLetter_Click">
+                    <StackPanel>
+                        <TextBlock Foreground="Blue" Text="अं"/>
+                        <TextBlock Text="am"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="LightYellow" Click="Button_HindiLetter_Click">
+                    <StackPanel>
+                        <TextBlock Foreground="Blue" Text="आः"/>
+                        <TextBlock Text="aha"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+
+            <Popup Name="myPopup" Placement="Mouse">
+                <ItemsControl Background="Goldenrod" x:Name="Consonants" ItemsSource="{Binding}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Background="Azure" Click="Button_HindiConsonantLetter_Click">
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="{Binding Path=Letter}"/>
+                                    <TextBlock Text="{Binding Path=ReadableEnglish}"/>
+                                </StackPanel>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Popup>
+
+            <Grid HorizontalAlignment="Center">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="Auto" />
+
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="क"/>
+                                <TextBlock Text="ka"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ख"/>
+                                <TextBlock Text="kha"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ग"/>
+                                <TextBlock Text="ga"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="घ"/>
+                                <TextBlock Text="gha"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ङ"/>
+                                <TextBlock Text="nga"/>
+                            </StackPanel>
+                        </ToggleButton>
+                    </StackPanel>
+
+                    <StackPanel  HorizontalAlignment="Center" Orientation="Horizontal">
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="च"/>
+                                <TextBlock Text="ca"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="छ"/>
+                                <TextBlock Text="cha"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ज"/>
+                                <TextBlock Text="ja"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="झ"/>
+                                <TextBlock Text="jha"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click" >
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ञ"/>
+                                <TextBlock Text="ña"/>
+                            </StackPanel>
+                        </ToggleButton>
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ट"/>
+                                <TextBlock Text="Ta"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ठ"/>
+                                <TextBlock Text="Tha"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ड"/>
+                                <TextBlock Text="Da"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ढ"/>
+                                <TextBlock Text="Dha"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ण"/>
+                                <TextBlock Text="Ṇa"/>
+                            </StackPanel>
+                        </ToggleButton>
+                    </StackPanel>
+
+
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="त"/>
+                                <TextBlock Text="ta"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="थ"/>
+                                <TextBlock Text="tha"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="द"/>
+                                <TextBlock Text="da"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ध"/>
+                                <TextBlock Text="dha"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="न"/>
+                                <TextBlock Text="na"/>
+                            </StackPanel>
+                        </ToggleButton>
+                    </StackPanel>
+
+
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="प"/>
+                                <TextBlock Text="pa"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="फ"/>
+                                <TextBlock Text="pha"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ब"/>
+                                <TextBlock Text="ba"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="भ"/>
+                                <TextBlock Text="bha"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="म"/>
+                                <TextBlock Text="ma"/>
+                            </StackPanel>
+                        </ToggleButton>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" HorizontalAlignment="Center" Orientation="Horizontal">
+
+
+
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                            <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="य"/>
+                                    <TextBlock Text="ya"/>
+                                </StackPanel>
+                            </ToggleButton>
+                            <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="र"/>
+                                    <TextBlock Text="ra"/>
+                                </StackPanel>
+                            </ToggleButton>
+                            <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ल"/>
+                                    <TextBlock Text="la"/>
+                                </StackPanel>
+                            </ToggleButton>
+                            <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click" >
+
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ळ"/>
+                                    <TextBlock Text="Ḷa"/>
+                                </StackPanel>
+                            </ToggleButton>
+
+                            <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="व"/>
+                                    <TextBlock Text="va"/>
+                                </StackPanel>
+                            </ToggleButton>
+                            <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ह"/>
+                                    <TextBlock Text="ha"/>
+                                </StackPanel>
+                            </ToggleButton>
+
+                            <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="श"/>
+                                    <TextBlock Text="śa"/>
+                                </StackPanel>
+                            </ToggleButton>
+                            <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ष"/>
+                                    <TextBlock Text="Ṣa"/>
+                                </StackPanel>
+                            </ToggleButton>
+                            <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="स"/>
+                                    <TextBlock Text="sa"/>
+                                </StackPanel>
+                            </ToggleButton>
+                        </StackPanel>
+
+
+
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="क़"/>
+                                <TextBlock Text="qa"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ख़"/>
+                                <TextBlock Text="qha"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ग़"/>
+                                <TextBlock Text="Ga"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ज़"/>
+                                <TextBlock Text="za"/>
+                            </StackPanel>
+                        </ToggleButton>
+
+
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ड़"/>
+                                <TextBlock Text="Da"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="ढ़"/>
+                                <TextBlock Text="Dha"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton IsChecked="{Binding ElementName=myPopup, Path=IsOpen}" Click="Button_Click">
+                            <StackPanel>
+                                <TextBlock Foreground="Blue" Text="फ़"/>
+                                <TextBlock Text="fa"/>
+                            </StackPanel>
+                        </ToggleButton>
+                    </StackPanel>
+
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+
+
+
+                    <StackPanel>
+
+
+
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                            <Button Background="LightGreen" Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ॐ"/>
+                                    <TextBlock Text="om"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Background="LightGreen" Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ऋ"/>
+                                    <TextBlock Text="ri"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Background="LightGreen" Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ॠ"/>
+                                    <TextBlock Text="rī"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Background="LightGreen" Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ऌ"/>
+                                    <TextBlock Text="li"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Background="LightGreen" Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ॡ"/>
+                                    <TextBlock Text="lī"/>
+                                </StackPanel>
+                            </Button>
+
+
+                        </StackPanel>
+
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button Click="Button_Click_SpecialCharacter" ToolTip="Press this button to remove the inherent vowel (a) from the previous character. For e.g., नमस्ते instead of नमसते" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="्"/>
+                                    <TextBlock Text="|" TextDecorations="Strikethrough"  />
+                                </StackPanel>
+                            </Button>
+                            <Button Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ा"/>
+                                    <TextBlock Text="aa"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ि"/>
+                                    <TextBlock Text="i"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ी" />
+                                    <TextBlock Text="ee"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ु" />
+                                    <TextBlock Text="u"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ू" />
+                                    <TextBlock Text="oo"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ृ"/>
+                                    <TextBlock Text="ru"/>
+                                </StackPanel>
+                            </Button>
+
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="े"/>
+                                    <TextBlock Text="e"/>
+                                </StackPanel>
+                            </Button>
+                            <!--e-->
+                            <Button Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ै"/>
+                                    <TextBlock Text="ai"/>
+                                </StackPanel>
+                            </Button>
+                            <!--ai-->
+                            <Button Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ो"/>
+                                    <TextBlock Text="o"/>
+                                </StackPanel>
+                            </Button>
+                            <!--o-->
+                            <Button Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ौ"/>
+                                    <TextBlock Text="au"/>
+                                </StackPanel>
+                            </Button>
+                            <!--au-->
+                            <Button Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ं"/>
+                                    <TextBlock Text="n"/>
+                                </StackPanel>
+                            </Button>
+                            <!--anusvara am-->
+                            <Button Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="ः"/>
+                                    <TextBlock Text="ha"/>
+                                </StackPanel>
+                            </Button>
+                            <!--visarga ah-->
+                            <Button Click="Button_Click_SpecialCharacter" >
+                                <StackPanel>
+                                    <TextBlock Foreground="Blue" Text="़"/>
+                                    <TextBlock Text="़" />
+                                </StackPanel>
+                            </Button>
+                            <!--nukta dot below-->
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="॑" ToolTip="udatta" Click="Button_Click_SpecialCharacter" />
+                            <!--udatta-->
+                            <Button Content="॒" ToolTip="anudatta" Click="Button_Click_SpecialCharacter" />
+                            <!--anudatta-->
+                            <Button Content="॓" ToolTip="accent grave" Click="Button_Click_SpecialCharacter" />
+                            <!--accent grave-->
+                            <Button Content="॔" ToolTip="accent aigu" Click="Button_Click_SpecialCharacter" />
+                            <!--accent aigu -->
+                            <Button Content="ँ" ToolTip="candra bindu" Click="Button_Click_SpecialCharacter" />
+                            <!--candra bindu -->
+                            <Button Content="ॄ" Click="Button_Click_SpecialCharacter" />
+                            <Button Content="ॣ" Click="Button_Click_SpecialCharacter" />
+
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content=" । " ToolTip="danda" Click="Button_Click_SpecialCharacter" />
+
+                            <Button Content=" ॥ " ToolTip="double danda" Click="Button_Click_SpecialCharacter" />
+
+                            <Button Content="ऽ" ToolTip="avagraha" Click="Button_Click_SpecialCharacter" />
+
+                            <Button Content="॰" ToolTip="????" Click="Button_Click_SpecialCharacter" />
+
+                        </StackPanel>
+
+                        <StackPanel Margin="0,10,0,0" HorizontalAlignment="Center" Orientation="Horizontal">
+                            <Button Content="Space" Background="Khaki" Height="50" Width="200" Click="Button_Space_Click" />
+                            <Button Content="Enter" Background="Khaki" Height="50" Width="200" Click="Button_Enter_Click" />
+                        </StackPanel>
+
+                        <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBox x:Name="TextToTransliterate" MouseDown="TextToTransliterate_MouseDown" Width="200" KeyDown="TextToTransliterate_KeyDown" />
+                            <Button Margin="10,0" Content="Transliterate Word" Width="200" Click="Button_AddWord_Click" />
+                        </StackPanel>
+
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                            <ItemsControl x:Name="TransliteratedWords" ItemsSource="{Binding}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Width="Auto" Content="{Binding}" Background="Azure" Click="Button_Click_AddTransliteratedWord">
+                                        </Button>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+
+                    </StackPanel>
+
+
+
+
+                </StackPanel>
+
+            </Grid>
+
+        </StackPanel>
+
+
+        <ItemsControl x:Name="SentencesControl" Margin="5" MaxHeight="300" Height="300" BorderBrush="Green" BorderThickness="3" ItemsSource="{Binding}" >
+            <ItemsControl.Template>
+                <ControlTemplate>
+                    <ScrollViewer x:Name="ScrollViewer" Padding="{TemplateBinding Padding}">
+                        <ItemsPresenter />
+                    </ScrollViewer>
+                </ControlTemplate>
+            </ItemsControl.Template>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <toolkit:RichTextBox Margin="5,0" AcceptsReturn="False" FontSize="24" FontWeight="Bold" Foreground="Blue" AutoWordSelection="True" TextChanged="RichTextBox_TextChanged" Text="{Binding HindiSentence}" GotFocus="RichTextBox_GotFocus" SelectionChanged="RichTextBox_SelectionChanged" Loaded="RichTextBox_Loaded" LostFocus="RichTextBox_LostFocus">
+                            <toolkit:RichTextBox.TextFormatter>
+                                <toolkit:PlainTextFormatter />
+                            </toolkit:RichTextBox.TextFormatter>
+                        </toolkit:RichTextBox>
+                        <TextBlock Margin="5,0" TextWrapping="Wrap" FontSize="22" Foreground="Black"  Text="{Binding EnglishReadableSentence}" />
+                        <TextBlock Margin="5,0" TextWrapping="Wrap" FontSize="20" FontStyle="Italic" Foreground="Red" Text="{Binding EnglishMeaning}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+
+        </ItemsControl>
+
+
+
+    </DockPanel>
+
+</Window>
